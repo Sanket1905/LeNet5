@@ -1,32 +1,63 @@
 LeNet-5 is a pioneering convolutional neural network (CNN) architecture. It was primarily designed for handwritten digit recognition tasks, such as the MNIST dataset.
 
-he architecture of LeNet-5 can be summarized as follows:
+The architecture of LeNet-5 can be summarized as follows:
 
-Input: 
-32
-×
-32
-32×32 grayscale image
-C1: Convolutional layer with 6 feature maps of size 
-28
-×
-28
-28×28
-S2: Subsampling (pooling) layer with 6 feature maps of size 
-14
-×
-14
-14×14
-C3: Convolutional layer with 16 feature maps of size 
-10
-×
-10
-10×10
-S4: Subsampling (pooling) layer with 16 feature maps of size 
-5
-×
-5
-5×5
-C5: Convolutional layer with 120 feature maps (flattened to 1x1)
-F6: Fully connected layer with 84 units
-Output: Fully connected layer with 10 units (softmax activation)
+LeNet-5 consists of seven layers (excluding the input layer), including convolutional layers, subsampling (pooling) layers, and fully connected layers. Here is a detailed breakdown:
+
+1. **Input Layer**: 
+   - **Size**: \(32 \times 32 \times 1\) (width, height, depth)
+   - **Description**: The input is a grayscale image. MNIST images (28x28) are typically zero-padded to fit this input size.
+
+2. **C1 - First Convolutional Layer**:
+   - **Size**: \(28 \times 28 \times 6\) (after applying six 5x5 filters)
+   - **Filter Size**: \(5 \times 5\)
+   - **Stride**: 1
+   - **Activation Function**: Sigmoid (historically, but ReLU can be used in modern implementations)
+
+3. **S2 - First Subsampling (Pooling) Layer**:
+   - **Size**: \(14 \times 14 \times 6\)
+   - **Pooling Type**: Average pooling (2x2)
+   - **Stride**: 2
+   - **Activation Function**: Sigmoid (historically, but ReLU can be used in modern implementations)
+
+4. **C3 - Second Convolutional Layer**:
+   - **Size**: \(10 \times 10 \times 16\)
+   - **Filter Size**: \(5 \times 5\)
+   - **Stride**: 1
+   - **Activation Function**: Sigmoid (historically, but ReLU can be used in modern implementations)
+   - **Note**: Not all 16 feature maps are connected to all 6 input maps (to reduce complexity).
+
+5. **S4 - Second Subsampling (Pooling) Layer**:
+   - **Size**: \(5 \times 5 \times 16\)
+   - **Pooling Type**: Average pooling (2x2)
+   - **Stride**: 2
+   - **Activation Function**: Sigmoid (historically, but ReLU can be used in modern implementations)
+
+6. **C5 - Third Convolutional Layer**:
+   - **Size**: \(1 \times 1 \times 120\)
+   - **Filter Size**: \(5 \times 5\)
+   - **Stride**: 1
+   - **Activation Function**: Sigmoid (historically, but ReLU can be used in modern implementations)
+   - **Description**: This layer is fully connected to the previous layer.
+
+7. **F6 - Fully Connected Layer**:
+   - **Size**: 84 units
+   - **Activation Function**: Sigmoid (historically, but ReLU can be used in modern implementations)
+
+8. **Output Layer**:
+   - **Size**: 10 units (one for each digit 0-9)
+   - **Activation Function**: Softmax (for classification tasks)
+
+### Summary
+
+The architecture of LeNet-5 can be summarized as follows:
+
+1. **Input**: \(32 \times 32\) grayscale image
+2. **C1**: Convolutional layer with 6 feature maps of size \(28 \times 28\)
+3. **S2**: Subsampling (pooling) layer with 6 feature maps of size \(14 \times 14\)
+4. **C3**: Convolutional layer with 16 feature maps of size \(10 \times 10\)
+5. **S4**: Subsampling (pooling) layer with 16 feature maps of size \(5 \times 5\)
+6. **C5**: Convolutional layer with 120 feature maps (flattened to 1x1)
+7. **F6**: Fully connected layer with 84 units
+8. **Output**: Fully connected layer with 10 units (softmax activation)
+
